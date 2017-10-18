@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <form class="form-group">
+        <label>Search Book:</label>
+        <input type="text" [(ngModel)]="searchBooksByName" name="searchByName" placeholder="search Book by Name" />
+        <!--<span class="glyphicon glyphicon-filter"></span>-->
+        <label>Technology</label>
+        <input type="checkbox" [(ngModel)]="showTechBooks" name="tech" />
+        <span>|</span>
+        <label>Management</label>
+        <input type="checkbox" [(ngModel)]="showMgmBooks" name="mgm" />
+        <span>|</span>
+        <label>fiction</label>
+        <input type="checkbox" [(ngModel)]="showFictionBooks" name="fiction" />
+      </form>
+    </div>
+  </div>
+  <app-book-list *ngFor="let app of apps | serachBox:searchBooksByName | filterSearch:showTechBooks:showMgmBooks:showFictionBooks " 
+  [bookdetails]="app"></app-book-list>
+</div>
